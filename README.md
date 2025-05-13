@@ -42,7 +42,7 @@ I wanted a quick demo feature how changes to the source code should be directly 
 
 The app's architecture:
 
-![app](live-viewer/app.puml)
+![app](live-viewer/app.svg)
 
 
 Run `start_plantuml_docker.sh`. Then run `main.py`. 
