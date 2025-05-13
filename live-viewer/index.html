@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Diagram Viewer</title>
+    <script>
+        const socket = new WebSocket("ws://127.0.0.1:8765");
+
+        socket.onopen = function () {
+            console.log("WebSocket connection established");
+        };
+
+        socket.onmessage = function (event) {
+                if (event.data.startsWith("data:image")) {
+                    const img = document.getElementById("diagram");
+                    img.src = event.data; // Set the image source directly
+                } else {
+                    console.log("Message received:", event.data);
+                }
+            };
+
+        function updatePackagePath() {
+            const pathInput = document.getElementById("package-path").value;
+            if (socket.readyState === WebSocket.OPEN) {
+                socket.send(JSON.stringify({ action: "updatePath", path: pathInput }));
+                console.log("Path updated:", pathInput);
+            } else {
+                alert("WebSocket connection is not open.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+
+    <label for="package-path">Package Path:</label>
+    <input type="text" id="package-path" placeholder="Enter package path" style="width: 300px;">
+    <button onclick="updatePackagePath()">Update Path</button>
+    <br>
+    <img id="diagram" alt="Diagram">
+</body>
+</html>

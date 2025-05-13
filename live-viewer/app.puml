@@ -1,0 +1,18 @@
+@startuml
+
+  node "Flask App" {
+    component "Frontend"
+    component "Py2Graph"
+    component "File Monitor"
+  }
+
+
+node "PlantUML Docker" {
+  component "PlantUML"
+}
+
+"File Monitor" --> "Py2Graph" : On File Change start analysis
+"Frontend" --> "File Monitor" : Start watching project
+"Py2Graph" --> "PlantUML" : Send UML Code
+"PlantUML" --> "Frontend" : Return Image
+@enduml
