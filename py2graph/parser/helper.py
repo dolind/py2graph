@@ -63,7 +63,6 @@ def resolve_type(type_name, imports):
     return imports.get(type_name, type_name)
 
 
-
 def resolve_nested_attribute(attribute_node):
     """
     Resolve the fully qualified name of a nested attribute.
@@ -100,14 +99,16 @@ def infer_type(annotation_or_value, imports=None):
             return resolve_nested_attribute(annotation_or_value)
         elif isinstance(annotation_or_value, ast.Subscript):
             value_id = infer_type(annotation_or_value.value)
-            slice_id = infer_type(annotation_or_value.slice) if not isinstance(annotation_or_value.slice, ast.Index) else None
+            slice_id = infer_type(annotation_or_value.slice) if not isinstance(annotation_or_value.slice,
+                                                                               ast.Index) else None
             return f"{value_id}[{slice_id}]" if value_id and slice_id else value_id
         elif isinstance(annotation_or_value, ast.BinOp) and isinstance(annotation_or_value.op, ast.BitOr):
             left = infer_type(annotation_or_value.left)
             right = infer_type(annotation_or_value.right)
             return f"Union[{left}, {right}]"
         elif isinstance(annotation_or_value, ast.Constant):
-            return type(annotation_or_value.value).__name__ if hasattr(annotation_or_value, 'value') else annotation_or_value.value
+            return type(annotation_or_value.value).__name__ if hasattr(annotation_or_value,
+                                                                       'value') else annotation_or_value.value
         elif isinstance(annotation_or_value, ast.List):
             return "list"
         elif isinstance(annotation_or_value, ast.Dict):
@@ -117,7 +118,6 @@ def infer_type(annotation_or_value, imports=None):
     return None
 
 
-
 def resolve_fqn(node, module_fqn, imports):
     if isinstance(node, ast.Name):
         return imports.get(node.id, f"{module_fqn}.{node.id}")
@@ -125,6 +125,7 @@ def resolve_fqn(node, module_fqn, imports):
         base_fqn = resolve_fqn(node.value, module_fqn, imports)
         return f"{base_fqn}.{node.attr}" if base_fqn else node.attr
     return None
+
 
 def parse_union_type(type_name, imports):
     if not type_name:
@@ -136,9 +137,11 @@ def parse_union_type(type_name, imports):
 def infer_value_id(value):
     return resolve_nested_attribute(value)
 
+
 def infer_fqn_from_base(base, module_fqn, imports={}):
     return resolve_fqn(base, module_fqn, imports)
+
+
 #
 def split_and_resolve_type_name(type_name, imports):
     return parse_union_type(type_name, imports)
-

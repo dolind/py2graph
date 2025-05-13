@@ -13,6 +13,7 @@ from py2graph.parser.methodbody import MethodBodyParser
 from py2graph.parser.moduleparser import ModuleParser
 from py2graph.parser.package import PackageParser
 
+
 def py2graph(domain_path: str, domain_module: str) -> Iterable[str]:
     start_time = time.time()
     graph = nx.DiGraph()  # Directed graph for all entities
@@ -35,4 +36,3 @@ def py2graph(domain_path: str, domain_module: str) -> Iterable[str]:
     print(f"Execution time: {end_time - start_time} seconds")
 
     return result
-

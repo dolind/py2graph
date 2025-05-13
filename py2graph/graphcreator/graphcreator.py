@@ -115,7 +115,7 @@ def link_upwards(graph, root_package_fqn):
                 class_fqn = '.'.join(node_fqn.split('.')[:-1])
             for edge_target, edge_data in graph.succ[node_fqn].items():
                 # only choose one
-                if 'aggregation' in edge_data['relation'] :
+                if 'aggregation' in edge_data['relation']:
                     graph.add_edge(class_fqn, edge_target, relation=["aggregation"])
                 elif 'composition' in edge_data['relation']:
                     graph.add_edge(class_fqn, edge_target, relation=["composition"])

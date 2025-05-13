@@ -31,7 +31,6 @@ class PackageParser(IParser):
             # Add deferred parsing expressions for each module in the directory
             for file in files:
                 if file.endswith('.py') and file != '__init__.py':
-
                     module_fqn = f"{current_fqn}.{file[:-3]}"
                     relationships.append((current_fqn, module_fqn, "contains"))
                     with open(Path(root) / file, 'r') as f:

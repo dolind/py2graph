@@ -1,6 +1,5 @@
 import ast
 
-
 from py2graph.parser.helper import split_and_resolve_type_name
 from py2graph.parser.parser_interface import IParser, DeferredParsingExpression, ParsedEntity, NodeType
 
@@ -43,5 +42,3 @@ class MethodParser(IParser):
             entity_type=NodeType.METHOD,
             relationships=relationships
         ), [deferred_body]
-
-

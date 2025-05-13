@@ -66,8 +66,6 @@ class PumlGenerator:
                 targetParent = ".".join(target.split(".")[:-1])
                 sourceParent = ".".join(source.split(".")[:-1])
 
-
-
                 if sourceisMethod:
                     outputSource = ".".join(source.split(".")[:-1])
                     if self.graph.nodes[sourceParent]['data'].node_type is NodeType.MODULE:
@@ -93,17 +91,16 @@ class PumlGenerator:
                 parentRelations = []
                 if sourceisMethod and sourceParentisClass:
 
-                        attribute_edges = ['composition', 'aggregation', 'has_attribute_with_type']
-                        if self.graph.has_edge(sourceParent, target):
-                            parentRelations = self.graph[sourceParent][target].values()
-                            parentRelations = parentRelations
-                            parentRelations = [word for word in parentRelations if word not in attribute_edges]
+                    attribute_edges = ['composition', 'aggregation', 'has_attribute_with_type']
+                    if self.graph.has_edge(sourceParent, target):
+                        parentRelations = self.graph[sourceParent][target].values()
+                        parentRelations = parentRelations
+                        parentRelations = [word for word in parentRelations if word not in attribute_edges]
                 if len(parentRelations) > 0:
-                     continue
+                    continue
 
                 for relation in edge_data['relation']:
                     # skip if we already identified a relation between the two for the parent, often the class
-
 
                     relation_output = _map_relation_type(relation)
 
@@ -158,7 +155,6 @@ class PumlGenerator:
             'is_abstract': self._is_abstract(class_fqn),
             'relationships': []
         }
-
 
         # Collect attributes and methods
         for source, target, edge_data in self.graph.out_edges(class_fqn, data=True):

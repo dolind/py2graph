@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 from enum import Enum, unique
 
 
@@ -7,7 +6,6 @@ class RelType(Enum):
     COMPOSITION = '*'
     INHERITANCE = '<|'
     DEPENDENCY = '<'
-
 
 
 class UmlRelation:
@@ -27,4 +25,3 @@ class UmlRelation:
 
     def __hash__(self):
         return hash((self.source_fqn, self.target_fqn, self.type))
-

@@ -33,9 +33,8 @@ class ModuleParser(IParser):
                 deferred_parsing.append(DeferredParsingExpression(fqn=deferred_fqn, node=node, context=context,
                                                                   imported_fqn=self.imports))
 
-
-        return  ParsedEntity(fqn=fqn, name=fqn.split('.')[-1], entity_type=NodeType.MODULE,
-                                       relationships=relationships), deferred_parsing
+        return ParsedEntity(fqn=fqn, name=fqn.split('.')[-1], entity_type=NodeType.MODULE,
+                            relationships=relationships), deferred_parsing
 
     def _parse_import(self, node):
         base_fqn = getattr(node, 'module', "") if isinstance(node, ast.ImportFrom) else ""

@@ -17,7 +17,7 @@ class UmlMethod():
     arguments: Dict = field(default_factory=dict)
     is_static: bool = False
     is_class: bool = False
-    return_type: List[str]|str = None
+    return_type: List[str] | str = None
 
     def represent_as_puml(self):
         items = []

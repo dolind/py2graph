@@ -10,8 +10,6 @@ class AttributeParser(IParser):
 
         super().__init__(imports)
 
-
-
     def parse(self, ast_node, fqn):
         """
         Parse an attribute to detect its type and defer further processing if needed.
@@ -27,7 +25,7 @@ class AttributeParser(IParser):
                 attr_fqn = fqn
             else:
                 attr_name = target.id
-                attr_fqn = fqn #f"{fqn}.{attr_name}"
+                attr_fqn = fqn  # f"{fqn}.{attr_name}"
             attr_type = self.infer_type_from_annotation(ast_node.annotation)
 
             # Determine aggregation vs composition
@@ -43,7 +41,7 @@ class AttributeParser(IParser):
                 attr_fqn = fqn
             else:
                 attr_name = target.id
-                attr_fqn = fqn#f"{fqn}.{attr_name}"
+                attr_fqn = fqn  # f"{fqn}.{attr_name}"
             attr_type = self.infer_type_from_value(ast_node.value)
 
             # Determine aggregation vs composition
@@ -55,7 +53,6 @@ class AttributeParser(IParser):
         attr_type = resolve_type(attr_type, self.imports)
         base_relationships = [(attr_fqn, attr_type, "has_type")]
         base_relationships.append((attr_fqn, attr_type, relationship_type))
-
 
         # Add relationships for subtypes in compound types
         compound_relationships = resolve_compound_relationships(attr_type, attr_fqn, self.imports)
@@ -69,9 +66,7 @@ class AttributeParser(IParser):
                 name=attr_name,
                 entity_type=NodeType.ATTRIBUTE,
                 relationships=all_relationships
-            ),[]
-
-        
+            ), []
 
         return None, []
 
@@ -86,11 +81,12 @@ def parse_subtypes(compound_type):
         return match[1:]
     return []
 
+
 def resolve_compound_relationships(attr_type, attr_fqn, imports):
     """
     Resolve compound types and return relationships for subtypes.
     """
-    if not attr_type or  '[' not in attr_type:
+    if not attr_type or '[' not in attr_type:
         return []
     subtypes = parse_subtypes(attr_type)
     relationships = []

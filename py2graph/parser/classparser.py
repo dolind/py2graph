@@ -15,7 +15,6 @@ class ClassParser(IParser):
             base_class = self.infer_fqn_from_base(base, fqn.split('.')[-1])
             base_classes.append(base_class)
 
-
             # TODO: ugly, instead allow ABC in imports to correctly resolve it
 
         root_package_prefix = fqn.split('.')[0]
@@ -26,7 +25,6 @@ class ClassParser(IParser):
             root_package_classes.append('abc.ABC')
         # Create relationships only for classes belonging to the root package
         relationships = [(fqn, base_class, "inherits") for base_class in root_package_classes]
-
 
         # relationships = [(fqn, base_class, "inherits") for base_class in base_classes]
 

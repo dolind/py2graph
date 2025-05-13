@@ -7,6 +7,7 @@ from sys import path
 
 from py2graph.py2graph import py2graph
 
+
 def run():
     # adds the current working directory to the system path in the first place
     # to ease module resolution when py2puml imports them
@@ -24,7 +25,6 @@ def run():
         help='the module name of the domain',
         default=None,
     )
-
 
     args = argparser.parse_args()
     print(''.join(py2graph(args.path, args.module)))

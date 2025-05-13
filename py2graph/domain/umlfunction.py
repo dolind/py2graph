@@ -18,13 +18,13 @@ def get_class_name_from_abcmeta(data):
     # Return the last part of the name
     return full_name
 
+
 @dataclass
 class UmlFunction(UmlItem):
     name: str
     module: str
     arguments: Dict[str, Union[str, List[str]]] = field(default_factory=dict)
     return_type: Union[str, List[str], None] = None
-
 
     def represent_as_puml(self):
         items = []
