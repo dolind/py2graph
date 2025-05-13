@@ -27,7 +27,7 @@ Parameters:
 ## Example
 A bigger example was added to evaluate the documentation of methods and dependencies in class methods.
 
-With working directory `example/productworld`, run `python -m py2graph productworld productworld`.
+Run `python -m py2graph example/productworld productworld`.
 
 The result shows the correct documentation of methods and free functions, now with the usage of the free functions,
 compared to my [pypuml mod](https://github.com/dolind/py2puml).
