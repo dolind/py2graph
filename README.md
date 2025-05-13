@@ -3,6 +3,8 @@
 
 This software is inspired by Py2Puml. I was not entirely satisfied with the results of 
 my [pypuml mod](https://github.com/dolind/py2puml).
+Details for my motivation can be found on my
+[blog](http://www.storymelange.com/posts/projects/uml-analyser/do-you-know-the-hidden-paths-of-your-code.html).
 
 I redid much of the parser and change the whole datastructures to a graph.
 
@@ -10,8 +12,6 @@ The tool discards strict UML Syntax and focuses on highlighting all dependencies
 Calls and usages within function body are registered.
 Real complexity usually stems from these hidden connections.
 
-More details for my motivation can be found on my
-[blog](http://www.storymelange.com/posts/projects/uml-analyser/do-you-know-the-hidden-paths-of-your-code.html).
 
 
 ## Usage
