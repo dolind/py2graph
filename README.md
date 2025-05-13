@@ -32,7 +32,7 @@ With working directory `example/productworld`, run `python -m py2graph productwo
 The result shows the correct documentation of methods and free functions, now with the usage of the free functions,
 compared to my [pypuml mod](https://github.com/dolind/py2puml).
 
-![correct documentation of methods and free functions](example/productworld/productworld.svg)
+![correct documentation of methods and free functions](example/productworld.svg)
 
 
 
