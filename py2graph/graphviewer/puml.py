@@ -61,7 +61,7 @@ class PumlGenerator:
                     continue
                 # avoid classes defining their methods
                 # this issue steams from the fact that i use methods and functions both with NodeTYpe.METHOD
-                # TODO introduce Function for free functions
+                # alternatively introduce Function for free functions
 
                 targetParent = ".".join(target.split(".")[:-1])
                 sourceParent = ".".join(source.split(".")[:-1])

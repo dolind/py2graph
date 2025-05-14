@@ -38,7 +38,7 @@ class GraphCreator:
 
         if inconsistent_nodes:
             print("Inconsistent nodes found (placeholders):")
-            # TODO: need to check what kind of method is expected. what is the difference between int and sum().
+            # need to check what kind of method is expected. what is the difference between int and sum().
             # currently int leads to int, whereas sum() leads to package.sum
             for node_fqn in inconsistent_nodes:
                 print(f"- {node_fqn}")
@@ -106,7 +106,6 @@ def link_upwards(graph, root_package_fqn):
     """
     for node_fqn, node_data in graph.nodes(data=True):
         node = node_data['data']
-        # TODO: savely add the relation
         if node.node_type == NodeType.ATTRIBUTE:
             # Handle attributes: link to class with a "defines" relationship
             if "__init__" in node_fqn:
