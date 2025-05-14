@@ -148,33 +148,5 @@ def link_upwards(graph, root_package_fqn):
                 else:
                     # Retain other non-attribute relations
                     edge_data['relation'] = relations
-        #
-        # elif node.node_type == NodeType.METHOD:
-        #     # Handle class methods and their uses
-        #     class_fqn = '.'.join(node_fqn.split('.')[:-1])
-        #     for edge_target, edge_data in graph.succ[node_fqn].items():
-        #         if "argument_of" in edge_data['relation'] or "returns" in edge_data['relation'] and edge_target.startswith(root_package_fqn):
-        #             graph.add_edge(class_fqn, edge_target, relation=["has_method_argument_with_type"])
-        #
-        # elif node.node_type == NodeType.BODY:
-        #     # For method bodies: inherit "uses" relationships
-        #     class_fqn = '.'.join(node_fqn.split('.')[:-1])
-        #     for edge_target, edge_data in graph.succ[node_fqn].items():
-        #         if "uses" in edge_data['relation'] :
-        #             graph.add_edge(class_fqn, edge_target, relation=["uses"])
-        #
-        # elif node.node_type == NodeType.CONSTRUCTOR:
-        #     # Handle constructor methods
-        #     class_fqn = '.'.join(node_fqn.split('.')[:-1])
-        #     for edge_target, edge_data in graph.succ[node_fqn].items():
-        #         if "defines" in edge_data['relation'] and edge_target.startswith(root_package_fqn):
-        #             graph.add_edge(class_fqn, edge_target, relation=["defines"])
-        #         elif "argument_of" in edge_data['relation'] or "returns" in edge_data['relation'] and edge_target.startswith(root_package_fqn):
-        #             graph.add_edge(class_fqn, edge_target, relation=["uses"])
-        #
-        #     # Constructor body "uses" relationships
-        #     for edge_source, edge_data in graph.pred[node_fqn].items():
-        #         if "uses" in edge_data['relation']:
-        #             graph.add_edge(class_fqn, edge_source, relation=["uses"])
 
     return graph

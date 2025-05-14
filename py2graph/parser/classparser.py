@@ -26,13 +26,6 @@ class ClassParser(IParser):
         # Create relationships only for classes belonging to the root package
         relationships = [(fqn, base_class, "inherits") for base_class in root_package_classes]
 
-        # relationships = [(fqn, base_class, "inherits") for base_class in base_classes]
-
-        #     {
-        #     local_name: imported_fqn
-        #     for local_name, imported_fqn in module_imports.items()
-        #     if imported_fqn.startswith(root_package_prefix)
-        # })
         # Handle class definitions
         deferred_parsing = []
         for node in ast_node.body:

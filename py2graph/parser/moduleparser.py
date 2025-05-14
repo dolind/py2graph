@@ -15,12 +15,6 @@ class ModuleParser(IParser):
                 module_imports = self._parse_import(node)
                 self.imports.update(module_imports)
 
-                #     {
-                #     local_name: imported_fqn
-                #     for local_name, imported_fqn in module_imports.items()
-                #     if imported_fqn.startswith(root_package_prefix)
-                # })
-
         relationships = [(fqn, imported_fqn, "imports") for imported_fqn in self.imports.values()]
 
         deferred_parsing = []
